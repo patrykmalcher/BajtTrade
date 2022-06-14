@@ -89,6 +89,11 @@ public class Symulacja {
         i.uczSię();
       }
       else {
+        // Jeśli robotnik nie ma wystarczająco jedzenia na początku
+        // rundy ponosi konsekwencje.
+        if (i.getZasoby().get(Zasób.Jedzenie).get(0) < 100)
+          i.zwiększDniBezJedzenia();
+        
         List<OfertaRobotnika> sprzedaż = i.produkuj();
         ofertySprzedażyRobotników.addAll(sprzedaż);
 
@@ -97,6 +102,10 @@ public class Symulacja {
 
         // Robotnik jak pracuje traci jedzenie!
         i.dodajZasób(Zasób.Jedzenie, 1, -100);
+        // i zużywa ubrania!
+        i.zużyjUbrania();
+        // i wszystkie narzędzia.
+        i.utraćNarzędzia();
       }
     }
 

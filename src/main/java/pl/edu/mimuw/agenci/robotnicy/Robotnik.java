@@ -149,7 +149,7 @@ public class Robotnik extends Agent {
       return res;
     }
 
-    if (produkt == Zasób.Ubrania) {
+    if (produkt == Zasób.Jedzenie) {
       if (ile > 0)
         res.add(new OfertaRobotnika(produkt, ile, this, 1));
       return res;
@@ -166,7 +166,7 @@ public class Robotnik extends Agent {
     }
 
     List<Integer> programy = getZasoby().get(Zasób.Programy);
-    int maksymalnyPoziomProgramu = programy.size();
+    int maksymalnyPoziomProgramu = programy.size() + 1;
 
     for (int i = maksymalnyPoziomProgramu - 1; i >= 1; i--) 
       if (programy.get(i) != 0 && ile > 0) {
@@ -273,5 +273,30 @@ public class Robotnik extends Agent {
 
   public Map<Zasób, Integer> getProduktywnosc() {
     return produktywność;
+  }
+
+  public void zużyjUbrania() {
+    int ileDoUtracenia = 100;
+
+    for (int i = 0; i < getZasoby().get(Zasób.Ubrania).size(); i++) {
+      int ileUtraciłem = Math.min(ileDoUtracenia, getZasoby().get(Zasób.Ubrania).get(i));
+      ileDoUtracenia -= ileUtraciłem;
+
+      if (i > 0)
+        dodajZasób(Zasób.Ubrania, i, ileUtraciłem);
+
+      dodajZasób(Zasób.Ubrania, i + 1, -ileUtraciłem);
+    }
+  }
+
+  public void utraćNarzędzia() {
+    getZasoby().put(Zasób.Narzędzia, new ArrayList<Integer>());
+  }
+
+  public void zwiększDniBezJedzenia() {
+    if (ileDniBezJedzenia < 2)
+      ileDniBezJedzenia ++;
+    else 
+      setDiamenty(0); // :(
   }
 }
