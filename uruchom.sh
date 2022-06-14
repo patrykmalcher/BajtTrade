@@ -1,0 +1,1 @@
+java -cp target/bajttrade-1.0-SNAPSHOT-jar-with-dependencies.jar pl.edu.mimuw.main.Main $1 $2
