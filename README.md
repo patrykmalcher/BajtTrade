@@ -3,7 +3,7 @@ Bajt Trade
 ## Opis
 Symulacja rynku.
 ## Uruchamianie
-Kompilacja: ./kompiluj.sh
+Kompilacja: ```./kompiluj.sh```
 Uruchamianie: ./uruchom.sh [plik wejściowy] [plik wyjściowy]
 ## Przykład
 Użycie programu dla przykładowego pliku wejściowego
