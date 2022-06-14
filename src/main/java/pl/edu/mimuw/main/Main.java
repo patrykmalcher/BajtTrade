@@ -36,7 +36,6 @@ public class Main {
     SymulacjaOutput symulacjaOutput = new SymulacjaOutput(symulacja);
     String res = outputAdapter.indent("\t").toJson(symulacjaOutput);
     
-
     BufferedWriter writer = new BufferedWriter(new FileWriter(args[1]));
     writer.write(res);
 

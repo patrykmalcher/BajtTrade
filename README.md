@@ -10,4 +10,4 @@ Użycie programu dla przykładowego pliku wejściowego
 znajdującego się w ```example/example_in.json``` i zapisanie wyniku
 w ```example/example_out.json```:\
 ```./kompiluj.sh```\
-.```/uruchom.sh example/example_in.json example/example_out.json```
+```./uruchom.sh example/example_in.json example/example_out.json```

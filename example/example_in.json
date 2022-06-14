@@ -53,7 +53,10 @@
   "spekulanci": [
   {
       "id": 12,
-      "kariera": "wypukly",
+      "kariera": 
+      {
+          "typ": "wypukly"
+      },
       "zasoby":
       {
           "diamenty": 100,

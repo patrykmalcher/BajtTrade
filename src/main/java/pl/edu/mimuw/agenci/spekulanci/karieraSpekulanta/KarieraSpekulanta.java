@@ -1,6 +1,7 @@
 package pl.edu.mimuw.agenci.spekulanci.karieraSpekulanta;
 
 import java.util.List;
+import java.util.Map;
 
 import pl.edu.mimuw.agenci.spekulanci.Spekulant;
 import pl.edu.mimuw.transakcje.OfertaSpekulanta;
@@ -10,6 +11,5 @@ public abstract class KarieraSpekulanta {
 
   public abstract List<OfertaSpekulanta> kupuj(Spekulant spekulant);
 
-  @Override
-  public abstract String toString();
+  public abstract Map<String, Object> wypiszSię();
 }

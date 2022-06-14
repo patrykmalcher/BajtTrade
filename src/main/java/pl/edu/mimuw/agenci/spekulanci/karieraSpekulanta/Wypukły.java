@@ -1,7 +1,9 @@
 package pl.edu.mimuw.agenci.spekulanci.karieraSpekulanta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pl.edu.mimuw.agenci.spekulanci.Spekulant;
 import pl.edu.mimuw.symulacja.Symulacja;
@@ -62,7 +64,9 @@ public class Wypukły extends KarieraSpekulanta {
   }
 
   @Override
-  public String toString() {
-    return "wypukly";
+  public Map<String, Object> wypiszSię() {
+    Map<String, Object> res = new HashMap<>();
+    res.put("typ", "wypukly");
+    return res;
   }
 }

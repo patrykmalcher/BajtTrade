@@ -4,6 +4,6 @@ import java.util.Map;
 
 public class SpekulantInput {
   public int id;
-  public String kariera;
+  public Map<String, Object> kariera;
   public Map<String, Integer> zasoby;
 }

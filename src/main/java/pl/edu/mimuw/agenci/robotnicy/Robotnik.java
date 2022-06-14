@@ -59,7 +59,7 @@ public class Robotnik extends Agent {
     produktywność.put(Zasób.Narzędzia, input.produktywnosc.get("narzedzia"));
 
     switch ((String) input.uczenie.get("typ")) {
-      case "okresowy": nauka = new Okresowy((int) input.uczenie.get("okresowosc_nauki")); break;
+      case "okresowy": nauka = new Okresowy(((Double) input.uczenie.get("okresowosc_nauki")).intValue()); break;
       case "oszczedny": nauka = new Oszczędny((double) input.uczenie.get("limit_diamentow")); break;
       case "pracus": nauka = new Pracuś(); break;
       case "rozkladowy": nauka = new Rozkładowy(); break;
@@ -78,8 +78,8 @@ public class Robotnik extends Agent {
       case "chciwy": produkcja = new Chciwy(); break;
       case "krotkowzroczny": produkcja = new Krótkowzroczny(); break;
       case "losowy": produkcja = new Losowy(); break;
-      case "perspektywiczny": produkcja = new Perspektywiczny((int) input.produkcja.get("historia_perspektywy")); break;
-      case "sredniak": produkcja = new Średniak((int) input.produkcja.get("historia_spekulanta_sredniego")); break;
+      case "perspektywiczny": produkcja = new Perspektywiczny(((Double) input.produkcja.get("historia_perspektywy")).intValue()); break;
+      case "sredniak": produkcja = new Średniak(((Double) input.produkcja.get("historia_sredniej_produkcji")).intValue()); break;
       default: produkcja = null;
     }
 
@@ -87,7 +87,7 @@ public class Robotnik extends Agent {
       case "czyscioszek": kupowanie = new Czyścioszek(); break;
       case "gadzeciarz": kupowanie = new Gadżeciarz(((Double) input.kupowanie.get("liczba_narzedzi")).intValue()); break;
       case "technofob": kupowanie = new Technofob(); break;
-      case "zmechanizowany": kupowanie = new Zmechanizowany((int) input.kupowanie.get("liczba_narzedzi")); break;
+      case "zmechanizowany": kupowanie = new Zmechanizowany(((Double) input.kupowanie.get("liczba_narzedzi")).intValue()); break;
       default: kupowanie = null;
     }
 

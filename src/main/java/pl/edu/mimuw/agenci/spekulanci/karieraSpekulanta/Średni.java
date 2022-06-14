@@ -1,7 +1,9 @@
 package pl.edu.mimuw.agenci.spekulanci.karieraSpekulanta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pl.edu.mimuw.agenci.spekulanci.Spekulant;
 import pl.edu.mimuw.symulacja.Symulacja;
@@ -10,6 +12,10 @@ import pl.edu.mimuw.zasoby.Zasób;
 
 public class Średni extends KarieraSpekulanta {
   private int historiaSpekulantaŚredniego;
+
+  public Średni(int historiaSpekulantaŚredniego) {
+    this.historiaSpekulantaŚredniego = historiaSpekulantaŚredniego;
+  }
 
   @Override
   public List<OfertaSpekulanta> sprzedaj(Spekulant spekulant) {
@@ -57,7 +63,10 @@ public class Średni extends KarieraSpekulanta {
   }
 
   @Override
-  public String toString() {
-    return "sredni";
+  public Map<String, Object> wypiszSię() {
+    Map<String, Object> res = new HashMap<>();
+    res.put("typ", "sredni");
+    res.put("historia_spekulanta_sredniego", historiaSpekulantaŚredniego);
+    return res;
   }
 }

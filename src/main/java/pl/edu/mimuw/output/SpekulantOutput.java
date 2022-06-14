@@ -10,12 +10,12 @@ import pl.edu.mimuw.zasoby.Zasób;
 @SuppressWarnings("unused") // Moshi korzysta!!
 public class SpekulantOutput {
   private int id;
-  private String kariera;
+  private Map<String, Object> kariera;
   private Map<String, Object> zasoby;
 
   public SpekulantOutput(Spekulant spekulant) {
     id = spekulant.getId();
-    kariera = spekulant.getKariera().toString();
+    kariera = spekulant.getKariera().wypiszSię();
 
     double diamentyOrg = spekulant.getDiamenty();
     Map<Zasób, List<Integer>> zasobyOrg = spekulant.getZasoby();

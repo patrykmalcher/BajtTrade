@@ -16,9 +16,9 @@ public class Spekulant extends Agent {
   public Spekulant(SpekulantInput input) {
     super(input);
 
-    switch (input.kariera) {
-      case "regulujacy": kariera = new Regulujący(); break;
-      case "sredni": kariera = new Średni(); break;
+    switch ((String) input.kariera.get("typ")) {
+      case "regulujacy_rynek": kariera = new Regulujący(); break;
+      case "sredni": kariera = new Średni(((Double) input.kariera.get("historia_spekulanta_sredniego")).intValue()); break;
       case "wypukly": kariera = new Wypukły(); break;
       default: kariera = null;
     }
