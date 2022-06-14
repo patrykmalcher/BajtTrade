@@ -8,6 +8,8 @@ public class OfertaSpekulanta implements Comparable<OfertaSpekulanta> {
   private double cena;
   private Spekulant spekulant;
   private int poziom;
+
+  // Przy kupnie ta wartość jest stale równa 100.
   private int ilość;
 
   public OfertaSpekulanta(Zasób zasób, double cena, Spekulant spekulant, int poziom, int ilość) {
@@ -26,6 +28,8 @@ public class OfertaSpekulanta implements Comparable<OfertaSpekulanta> {
     return poziom;
   }
 
+  // Ustawienie ofert w odpowiedniej kolejności, żeby robotnicy
+  // zaczynali od kupna najlepszych produktów.
   @Override
   public int compareTo(OfertaSpekulanta o) {
     if (poziom == o.getPoziom()) {

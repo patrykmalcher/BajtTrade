@@ -13,7 +13,12 @@ import pl.edu.mimuw.zasoby.Zasób;
 public class Info {
   private int długość;
   private Giełda giełda;
+
+  // Zmienna statyczna - Info jest tylko jedne.
+  // Łatwiejszy dostęp do informacji z dowolnego
+  // miejsca programu.
   private static int karaZaBrakUbrań;
+
   private Map<Zasób, Double> ceny;
 
   public Info(InfoInput input) {
@@ -33,6 +38,9 @@ public class Info {
     ceny.put(Zasób.Narzędzia, input.ceny.get("narzedzia"));
   }
 
+  // Funcja statyczna - Info jest tylko jedne.
+  // Łatwiejszy dostęp do informacji z dowolnego
+  // miejsca programu.
   public static int getKaraZaBrakUbrań() {
     return karaZaBrakUbrań;
   }

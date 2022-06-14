@@ -7,6 +7,7 @@ import pl.edu.mimuw.agenci.robotnicy.Robotnik;
 import pl.edu.mimuw.agenci.spekulanci.Spekulant;
 import pl.edu.mimuw.symulacja.Symulacja;
 
+// Klasa wykorzystywana do wypisania do pliku JSON.
 @SuppressWarnings("unused") // Moshi korzysta!!
 public class SymulacjaOutput {
   private InfoOutput info;

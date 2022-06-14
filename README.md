@@ -1,7 +1,9 @@
 # Nazwa Projektu
 Bajt Trade 
 ## Opis
-Symulacja rynku.
+Program ma na celu wykonać symulację rynku, w której biorą udział agenci.
+Program korzysta z biblioteki Moshi obsługującej wczytywanie i wypisywanie
+danych w formacie JSON.
 ## Uruchamianie
 Kompilacja: ```./kompiluj.sh```\
 Uruchamianie: ```./uruchom.sh [plik wejściowy] [plik wyjściowy]```

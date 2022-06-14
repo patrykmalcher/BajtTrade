@@ -11,5 +11,6 @@ public abstract class KarieraSpekulanta {
 
   public abstract List<OfertaSpekulanta> kupuj(Spekulant spekulant);
 
+  // Wykorzystywana do wypisywania do pliku JSON.
   public abstract Map<String, Object> wypiszSię();
 }

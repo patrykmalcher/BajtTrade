@@ -20,11 +20,20 @@ public class Symulacja {
   private List<Robotnik> robotnicy;
   private List<Spekulant> spekulanci;
 
+  // Zmienne i funkcje statyczne:
+  // Jest tylko jedna symulacja, chemy mieć
+  // ułatwiony dostęp do ważnych informacji 
+  // z dowolnego miejsca programu.
+
   private static int tura;
 
+  // Lista średnich cen z każdej tury.
   private static List<Map<Zasób, Double>> średnieCeny;
+
+  // Lista łącznej ilości ofert z każdej tury.
   private static List<Map<Zasób, Integer>> ilośćOfert;
 
+  // Minimalne i maksymalne ceny osiągnięte dla każdego zasobu.
   private Map<Zasób, Double> minimalneCeny;
   private Map<Zasób, Double> maksymalneCeny;
 
@@ -50,10 +59,10 @@ public class Symulacja {
 
     ilośćOfert = new ArrayList<>();
     ilośćOfert.add(new HashMap<Zasób, Integer>());
-    ilośćOfert.get(0).put(Zasób.Jedzenie, 1);
-    ilośćOfert.get(0).put(Zasób.Programy, 1);
-    ilośćOfert.get(0).put(Zasób.Ubrania, 1);
-    ilośćOfert.get(0).put(Zasób.Narzędzia, 1);
+
+    for (Zasób i: Zasób.values())
+      if (i != Zasób.Diamenty)
+        ilośćOfert.get(0).put(i, 1);
 
     minimalneCeny = new HashMap<>(średnieCeny.get(0));
     maksymalneCeny = new HashMap<>(średnieCeny.get(0));
@@ -86,6 +95,7 @@ public class Symulacja {
         List<OfertaRobotnika> kupno = i.kupuj();
         ofertyKupnaRobotników.addAll(kupno);
 
+        // Robotnik jak pracuje traci jedzenie!
         i.dodajZasób(Zasób.Jedzenie, 1, -100);
       }
     }
@@ -111,6 +121,8 @@ public class Symulacja {
       Collections.reverse(ofertySprzedażyRobotników);
     }
 
+    // Dopasowanie ofert sprzedaży robotników z ofertami 
+    // kupna spekulantów.
     for (OfertaRobotnika i: ofertySprzedażyRobotników) {
       for (OfertaSpekulanta j: ofertyKupnaSpekulantów) {
         if (i.getZasób() == j.getZasób() &&
@@ -136,6 +148,8 @@ public class Symulacja {
       }
     }
 
+    // Dopasowanie ofert kupna robotników z ofertami 
+    // sprzedaży spekulantów.
     for (OfertaRobotnika i: ofertyKupnaRobotników) {
       for (OfertaSpekulanta j: ofertySprzedażySpekulantów) {
         if (i.getZasób() == j.getZasób()) {
@@ -161,6 +175,7 @@ public class Symulacja {
       }
     }
 
+    // Skup giełdy.
     for (OfertaRobotnika i: ofertySprzedażyRobotników) {
       double średnia = średniaCena(tura - 1, i.getZasób());
 
@@ -172,6 +187,7 @@ public class Symulacja {
     return tura;
   }
 
+  // Średnia cena zasobu zasób z tury tura.
   public static double średniaCena(int tura, Zasób zasób) {
     return średnieCeny.get(tura).get(zasób);
   }
@@ -183,12 +199,14 @@ public class Symulacja {
   public void rozegrajSymulację() {
     for (int i = 0; i < info.getDługość(); i++) {
       wykonajTurę();
+      // Trzeba zaaktualizować średnie ceny!
       średnieCeny.add(new HashMap<Zasób, Double>());
 
       for (Zasób j: ilośćZAktualnegoDnia.keySet()) {
         if (ilośćZAktualnegoDnia.get(j) > 0)
           średnieCeny.get(tura).put(j, cenyZAktualnegoDnia.get(j) / ilośćZAktualnegoDnia.get(j));
         else 
+          // Ofert nie było - średnia cena to cena z dnia zerowego.
           średnieCeny.get(tura).put(j, średniaCena(0, j));
       }
 

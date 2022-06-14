@@ -8,5 +8,7 @@ import pl.edu.mimuw.transakcje.OfertaRobotnika;
 
 public abstract class StrategiaKupowania {
   public abstract List<OfertaRobotnika> kupuj(Robotnik r);
+
+  // Wykorzystywana do wypisywania do pliku JSON.
   public abstract Map<String, Object> wypiszSię();
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 import pl.edu.mimuw.symulacja.Symulacja;
 import pl.edu.mimuw.zasoby.Zasób;
 
+// Klasa wykorzystywana do wypisania do pliku JSON.
 @SuppressWarnings("unused") // Moshi korzysta!!
 public class InfoOutput {
   private int dzien;

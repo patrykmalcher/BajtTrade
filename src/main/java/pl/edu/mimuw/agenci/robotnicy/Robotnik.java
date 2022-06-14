@@ -42,6 +42,9 @@ public class Robotnik extends Agent {
 
   private int poziom;
   private KarieraRobotnika aktualnaKariera;
+
+  // Historia wszystkich osiągniętych poziomów
+  // kariery robotnika.
   private Map<KarieraRobotnika, Integer> kariera;
 
   private int ileDniBezJedzenia;
@@ -59,12 +62,14 @@ public class Robotnik extends Agent {
     produktywność.put(Zasób.Narzędzia, input.produktywnosc.get("narzedzia"));
 
     switch ((String) input.uczenie.get("typ")) {
-      case "okresowy": nauka = new Okresowy(((Double) input.uczenie.get("okresowosc_nauki")).intValue()); break;
-      case "oszczedny": nauka = new Oszczędny((double) input.uczenie.get("limit_diamentow")); break;
+      case "okresowy": nauka = new Okresowy(
+        ((Double) input.uczenie.get("okresowosc_nauki")).intValue()); break;
+      case "oszczedny": nauka = new Oszczędny(
+        (double) input.uczenie.get("limit_diamentow")); break;
       case "pracus": nauka = new Pracuś(); break;
       case "rozkladowy": nauka = new Rozkładowy(); break;
       case "student": nauka = new Student(((Double) input.uczenie.get("zapas")).intValue(),
-                                          ((Double) input.uczenie.get("okres")).intValue()); break;
+        ((Double) input.uczenie.get("okres")).intValue()); break;
       default: nauka = null; 
     }
 
@@ -78,16 +83,20 @@ public class Robotnik extends Agent {
       case "chciwy": produkcja = new Chciwy(); break;
       case "krotkowzroczny": produkcja = new Krótkowzroczny(); break;
       case "losowy": produkcja = new Losowy(); break;
-      case "perspektywiczny": produkcja = new Perspektywiczny(((Double) input.produkcja.get("historia_perspektywy")).intValue()); break;
-      case "sredniak": produkcja = new Średniak(((Double) input.produkcja.get("historia_sredniej_produkcji")).intValue()); break;
+      case "perspektywiczny": produkcja = new Perspektywiczny(
+        ((Double) input.produkcja.get("historia_perspektywy")).intValue()); break;
+      case "sredniak": produkcja = new Średniak(
+        ((Double) input.produkcja.get("historia_sredniej_produkcji")).intValue()); break;
       default: produkcja = null;
     }
 
     switch ((String) input.kupowanie.get("typ")) {
       case "czyscioszek": kupowanie = new Czyścioszek(); break;
-      case "gadzeciarz": kupowanie = new Gadżeciarz(((Double) input.kupowanie.get("liczba_narzedzi")).intValue()); break;
+      case "gadzeciarz": kupowanie = new Gadżeciarz(
+        ((Double) input.kupowanie.get("liczba_narzedzi")).intValue()); break;
       case "technofob": kupowanie = new Technofob(); break;
-      case "zmechanizowany": kupowanie = new Zmechanizowany(((Double) input.kupowanie.get("liczba_narzedzi")).intValue()); break;
+      case "zmechanizowany": kupowanie = new Zmechanizowany(
+        ((Double) input.kupowanie.get("liczba_narzedzi")).intValue()); break;
       default: kupowanie = null;
     }
 
@@ -103,11 +112,9 @@ public class Robotnik extends Agent {
     }
 
     kariera = new HashMap<>();
-    kariera.put(KarieraRobotnika.Rolnik, 1);
-    kariera.put(KarieraRobotnika.Rzemieślnik, 1);
-    kariera.put(KarieraRobotnika.Inżynier, 1);
-    kariera.put(KarieraRobotnika.Górnik, 1);
-    kariera.put(KarieraRobotnika.Programista, 1);
+
+    for (KarieraRobotnika i: KarieraRobotnika.values())
+      kariera.put(i, 1);
 
     ileDniBezJedzenia = 0;
     ileWyprodukowałWRundzie = 0;
@@ -232,7 +239,8 @@ public class Robotnik extends Agent {
     for (int i = 1; i < ubrania.size(); i++)
       ilePowyżejPierwszego += ubrania.get(i);
 
-    return ilePowyżejPierwszego + Math.max(0, ubrania.get(0) - 100 + ilePowyżejPierwszego);
+    return ilePowyżejPierwszego + Math.max(0, ubrania.get(0)
+     - Math.max(0, 100 - ilePowyżejPierwszego));
   }
 
   public int ileWyprodukowałWRundzie() {

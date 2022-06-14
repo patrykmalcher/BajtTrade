@@ -12,6 +12,7 @@ import pl.edu.mimuw.agenci.robotnicy.strategieNauki.StrategiaNauki;
 import pl.edu.mimuw.agenci.robotnicy.strategieProdukcji.StrategiaProdukcji;
 import pl.edu.mimuw.zasoby.Zasób;
 
+// Klasa wykorzystywana do wypisania do pliku JSON.
 @SuppressWarnings("unused") // Moshi korzysta!!
 public class RobotnikOutput {
   private int id;

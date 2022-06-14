@@ -7,6 +7,8 @@ public class OfertaRobotnika implements Comparable<OfertaRobotnika> {
   private Zasób zasób;
   private int ilość;
   private Robotnik robotnik;
+
+  // Jeśli kupujemy ta wartość nie ma znaczenia.
   private int poziom;
 
   public OfertaRobotnika(Zasób zasób, int ilość, Robotnik robotnik, int poziom) {
@@ -20,6 +22,8 @@ public class OfertaRobotnika implements Comparable<OfertaRobotnika> {
     return robotnik;
   }
 
+  // Ustawienie ofert w odpowiedniej kolejności, żeby móc zaczynać
+  // transakcje według zasad giełdowych.
   @Override
   public int compareTo(OfertaRobotnika o) {
     if (robotnik.getDiamenty() == o.getRobotnik().getDiamenty())

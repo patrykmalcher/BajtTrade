@@ -7,6 +7,7 @@ import java.util.Map;
 import pl.edu.mimuw.agenci.spekulanci.Spekulant;
 import pl.edu.mimuw.zasoby.Zasób;
 
+// Klasa wykorzystywana do wypisania do pliku JSON.
 @SuppressWarnings("unused") // Moshi korzysta!!
 public class SpekulantOutput {
   private int id;
